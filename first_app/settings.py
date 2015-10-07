@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_HOST_USER = 'jacob@chenchatech.com'
+EMAIL_HOST_PASSWORD = 'KGjtFXLOREibJzcEunAMUg'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = (
