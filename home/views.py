@@ -7,6 +7,11 @@ from django.core.mail import send_mail
 
 
 def index(request):
+    context = {}
+    return render(request, 'home.html', context)
+
+
+def register(request):
     form = StudentForm(request.POST or None)
 
     context = {
