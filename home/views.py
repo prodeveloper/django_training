@@ -40,8 +40,10 @@ def feedback(request):
         from_email = form.cleaned_data.get('email')
         full_name = form.cleaned_data.get('full_name')
         message = form.cleaned_data.get('message')
-        prepared_message = "You have feedback from {} saying '{}'".format(full_name, message)
-        send_mail('New feedback given', prepared_message, from_email, ['jacob@chenchatech.com'], fail_silently=False)
+        prepared_message = ("You have feedback from {} saying '{}'"
+                            .format(full_name, message))
+        send_mail('New feedback given', prepared_message, from_email,
+                  ['jacob@chenchatech.com'], fail_silently=False)
     context = {
         "form": form
     }
@@ -50,6 +52,7 @@ def feedback(request):
 
 def students(request):
     search_term = request.GET.get('search', default='')
-    students = Student.objects.all().order_by('-last_update').filter(full_name__contains=search_term)
+    students = (Student.objects.all().order_by('-last_update')
+                .filter(full_name__contains=search_term))
     context = {'students': students}
     return render(request, 'students.html', context)
